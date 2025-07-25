@@ -7,6 +7,8 @@
   <meta name="keywords" content="" />
   <meta name="author" content="mj Tang" />
   <meta name="description" content="" />
+  <!-- 添加在<head>区域 -->
+<link rel="stylesheet" href="/css/r2-video.css">
   
   
   <title>
@@ -102,6 +104,7 @@
 <!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
 <!-- LaTex Display -->
+ 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
 </script>
@@ -111,6 +114,13 @@
       inlineMath: [['$', '$'], ['\\(', '\\)']]
     }
   };
+// 获取文件的临时访问链接
+async function getSecureFileUrl(filename) {
+  const response = await fetch(`/r2/presign?file=${encodeURIComponent(filename)}`);
+  const data = await response.json();
+  return data.url; // 得到带有签名的临时URL
+}
+
 </script>
 
 <div class="post">
@@ -134,6 +144,7 @@
         
             
 </div>
+
         <div class="footer">
   
     <div class="footer-more">
@@ -149,7 +160,8 @@
     </div>
   
 </div>
-
+<!-- 添加在<body>结束之前 -->
+<script src="/js/r2-video.js" defer></script>
       </div>
 
       <div class="back-to-top hidden">

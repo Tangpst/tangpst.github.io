@@ -1,0 +1,144 @@
+/* source/css/r2-video.css */
+
+/* 视频容器 */
+.r2-video-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #000;
+  aspect-ratio: 16/9;
+  max-width: 100%;
+}
+
+/* 视频元素 */
+.r2-private-video {
+  width: 100%;
+  height: 100%;
+  display: none;
+  object-fit: contain;
+  background-color: #000;
+}
+
+/* 覆盖层 */
+.r2-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: opacity 0.3s;
+  z-index: 10;
+}
+
+/* 播放按钮 */
+.r2-video-play {
+  border: none;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.r2-video-play svg {
+  fill: #fff;
+  width: 40px;
+  height: 40px;
+  margin-left: 5px;
+}
+
+.r2-video-play:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 加载状态 */
+.r2-video-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.r2-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid #fff;
+  border-radius: 50%;
+  animation: r2-spin 1s linear infinite;
+}
+
+.r2-loading-text {
+  color: #fff;
+  margin-top: 15px;
+  font-size: 0.9em;
+}
+
+@keyframes r2-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 错误状态 */
+.r2-video-error {
+  display: none;
+  text-align: center;
+  color: #ff6b6b;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+}
+
+.r2-error-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ff6b6b;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 24px;
+  margin: 0 auto 15px;
+}
+
+.r2-retry-btn {
+  margin-top: 15px;
+  padding: 8px 20px;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.r2-retry-btn:hover {
+  background: #ff5252;
+}
+
+/* 加载完成状态 */
+.r2-video-container.loaded .r2-video-overlay {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.r2-video-container.loaded .r2-private-video {
+  display: block;
+}
+
+/* 播放中状态 */
+.r2-video-container.playing .r2-video-overlay {
+  background: rgba(0, 0, 0, 0);
+}
