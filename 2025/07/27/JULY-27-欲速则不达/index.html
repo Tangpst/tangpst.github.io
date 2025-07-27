@@ -12,7 +12,9 @@
   
   <title>
     
-      Tang.cafe
+      JULY 27 欲速则不达 
+      
+      
     
   </title>
 
@@ -32,10 +34,10 @@
 
 
   
-    
-<link rel="stylesheet" href="/css/index.css">
 
   
+    
+<link rel="stylesheet" href="/css/post.css">
 
   
 
@@ -97,148 +99,50 @@
 
 
       <div class="main">
-        <div>
-  <ul>
-    <!-- 遍历渲染文章 -->
-    
-    <li>
-      <h3>Jul 27, 2025</h3>
-      <h2>
-        <a href="/2025/07/27/JULY-27-%E6%AC%B2%E9%80%9F%E5%88%99%E4%B8%8D%E8%BE%BE/">
-          
-            
-              <span>JULY 27 欲速则不达</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h3>Jul 26, 2025</h3>
-      <h2>
-        <a href="/2025/07/26/JULY-26-%E4%B8%8E%E6%B5%B7%E7%9B%B8%E9%A1%BE/">
-          
-            
-              <span>JULY 26 与海相顾</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h3>Jul 25, 2025</h3>
-      <h2>
-        <a href="/2025/07/25/JULY-25-%E8%A1%A8%E9%80%9E%E5%BC%BA/">
-          
-            
-              <span>JULY 25 表逞强</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h3>Jul 24, 2025</h3>
-      <h2>
-        <a href="/2025/07/24/JULY-24-%E5%B0%B1%E8%AE%A9%E5%BE%80%E4%BA%8B%E9%9A%8F%E9%A3%8E/">
-          
-            
-              <span>JULY 24 就让往事随风</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h3>Jul 23, 2025</h3>
-      <h2>
-        <a href="/2025/07/23/JULY-23-%E5%BF%8C%E6%84%A7%E5%AF%B9%E6%A0%91%EF%BC%81/">
-          
-            
-              <span>JULY 23 忌愧对树！</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h3>Jul 22, 2025</h3>
-      <h2>
-        <a href="/2025/07/22/JULY-22-%E5%AE%9C%E6%A8%A1%E4%BB%BF%E4%BA%91%E6%9C%B5/">
-          
-            
-              <span>JULY 22 宜模仿云朵</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h3>Jul 21, 2025</h3>
-      <h2>
-        <a href="/2025/07/21/JULY-21-%E5%93%A6%EF%BC%9F/">
-          
-            
-              <span>JULY 21 哦？</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h3>Jul 20, 2025</h3>
-      <h2>
-        <a href="/2025/07/20/JULY-20-Don-t-stop/">
-          
-            
-              <span>JULY 20 Don't stop</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h3>Jul 19, 2025</h3>
-      <h2>
-        <a href="/2025/07/19/JULY-19-%E7%94%9F%E6%97%A5%E5%BF%AB%E4%B9%90%EF%BC%81/">
-          
-            
-              <span>JULY 19 生日快乐！</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h3>Jul 18, 2025</h3>
-      <h2>
-        <a href="/2025/07/18/JULY-18-Dance/">
-          
-            
-              <span>JULY 18 Dance</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-  </ul>
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+ 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+// 获取文件的临时访问链接
+async function getSecureFileUrl(filename) {
+  const response = await fetch(`/r2/presign?file=${encodeURIComponent(filename)}`);
+  const data = await response.json();
+  return data.url; // 得到带有签名的临时URL
+}
+
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Jul 27, 2025
+  </h3>
+  <h1>
+    JULY 27 欲速则不达
+  </h1>
+  <div class="content markdown-body">
+    <video controls width="100%">
+  <source src="https://pub.tang.cafe/%E6%88%91%E8%BF%98%E6%B2%A1%E4%B8%8A%E8%BD%A6%E6%90%9E%E7%AC%91%E8%A1%A8%E6%83%85%E8%A7%86%E9%A2%91%E5%BD%B1%E8%A7%86%E5%9C%BA%E6%99%AF%E5%BD%B1%E8%A7%86%E5%90%8D%E5%9C%BA%E9%9D%A2_%E7%88%B1%E7%BB%99%E7%BD%91_aigei_com.mp4" type="video/mp4">
+</video>
+
+<p><img src="/images/mmexport1753588393641.jpg" alt="欲速则不达"></p>
+
+  </div>
   
-  <nav class="post-navigation">
     
-    
-      <a id="next" class="index-nav" href="/page/2/">OLDER&nbsp;&gt;</a>
-    
-  </nav>
+      <a id="older" class="blog-nav" href="/2025/07/26/JULY-26-%E4%B8%8E%E6%B5%B7%E7%9B%B8%E9%A1%BE/">OLDER&nbsp;&gt;</a>
+      
+        
+            
 </div>
 
         <div class="footer">
