@@ -308,7 +308,7 @@ async function getSecureFileUrl(filename) {
           
           hits.forEach(hit => {
             // 确保获取正确的URL字段（按优先级尝试）
-            let fullUrl = hit.permalink || hit.url || hit.path || '#';
+            let fullUrl = hit.path || hit.url || hit.permalink || '#';
             
             // 修复URL格式（确保以/开头）
             if (fullUrl && !fullUrl.startsWith('/') && !fullUrl.startsWith('http')) {
