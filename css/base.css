@@ -563,6 +563,23 @@ a:hover {
   width: 750px;
 }
 
+.search-result-title h2 {
+  margin-bottom: 5px;
+}
+
+.search-result-abstract {
+  font-weight: normal;
+  color: #666;
+  margin-top: 5px;
+}
+
+.search-keyword {
+  background-color: #ffeb3b;
+  color: #333;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
 @media (max-width: 768px) {
   .search-box {
     width: 100%;
