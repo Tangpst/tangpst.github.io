@@ -322,44 +322,54 @@ async function getSecureFileUrl(filename) {
               fullUrl = fullUrl.replace(/\.html$/, '');
             }
             
-            // 获取标题
-            const title = hit._highlightResult?.title?.value || hit.title || 'Untitled';
-            
-            // 获取内容
-            let content = hit._highlightResult?.content?.value || 
-                         hit.content || 
-                         hit.excerpt || 
-                         hit._highlightResult?.excerpt?.value || 
-                         '';
-            
-            // 如果内容为空，尝试从snippet获取
-            if (!content) {
-              content = hit._snippetResult?.content?.value || '';
-            }
-            
-            // 截取内容（150字符）
-            if (content.length > 150) {
-              content = content.substring(0, 150) + '...';
-            }
-            
-            // 自定义高亮（如果Algolia没有返回高亮）
-            if (query && !hit._highlightResult) {
-              const regex = new RegExp(escapeRegExp(query), 'gi');
-              content = content.replace(regex, '<span class="search-keyword">$&</span>');
-            }
-            
-            html += `
-              <li>
-                <a href="${fullUrl}" class="search-result-title"><h2>${title}</h2></a>
-                <h3 class="search-result-abstract">${content}</h3>
-                <hr>
-              </li>
-            `;
-          });
+            // 获取标题（去除HTML标签）
+          const title = (hit._highlightResult?.title?.value || hit.title || 'Untitled')
+            .replace(/<[^>]+>/g, '') // 去除HTML标签
+            .replace(/!\[.*?\]\(.*?\)/g, ''); // 去除Markdown图片语法
           
-          html += '</ul>';
-          $resultContent.innerHTML = html;
-        }
+          // 获取纯文本内容（优先使用高亮字段）
+          let content = (hit._highlightResult?.content?.value || 
+                       hit.content || 
+                       hit.excerpt || 
+                       hit._highlightResult?.excerpt?.value || 
+                       '')
+                       // 双重过滤确保无HTML标签
+                       .replace(/]*>/g, '[图片]') // 替换图片标签为文字提示
+                       .replace(/!\[.*?\]\(.*?\)/g, '[图片]') // 替换Markdown图片语法
+                       .replace(/<[^>]+>/g, '') // 去除所有HTML标签
+                       .replace(/\s+/g, ' ') // 合并多余空格
+                       .trim();
+          
+          // 如果内容为空，尝试从snippet获取
+          if (!content) {
+            content = (hit._snippetResult?.content?.value || '')
+              .replace(/]*>/g, '[图片]')
+              .replace(/<[^>]+>/g, '');
+          }
+          
+          // 截取内容（150字符）
+          if (content.length > 150) {
+            content = content.substring(0, 150) + '...';
+          }
+          
+          // 自定义高亮
+          if (query) {
+            const regex = new RegExp(escapeRegExp(query), 'gi');
+            content = content.replace(regex, '<span class="search-keyword">$&</span>');
+          }
+          
+          html += `
+            <li>
+              <a href="${fullUrl}" class="search-result-title"><h2>${title}</h2></a>
+              <h3 class="search-result-abstract">${content}</h3>
+              <hr>
+            </li>
+          `;
+        });
+        
+        html += '</ul>';
+        $resultContent.innerHTML = html;
+      }
         
         // 辅助函数：转义正则特殊字符
         function escapeRegExp(string) {
