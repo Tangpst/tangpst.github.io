@@ -281,7 +281,7 @@ async function getSecureFileUrl(filename) {
           }
           
           // 显示加载状态
-          $resultContent.innerHTML = "<ul><span class='local-search-empty'>搜索中...</span></ul>";
+          $resultContent.innerHTML = "<ul><span class='local-search-loading'>搜索中...</span></ul>";
           
           // 执行搜索
           index.search(query, {
