@@ -322,44 +322,52 @@ async function getSecureFileUrl(filename) {
             .replace(/<[^>]+>/g, '') // 去除HTML标签
             .replace(/!\[.*?\]\(.*?\)/g, ''); // 去除Markdown图片语法
           
-          // 获取纯文本内容（优先使用高亮字段）
-          let content = (hit._highlightResult?.content?.value || 
-                       hit.content || 
-                       hit.excerpt || 
-                       hit._highlightResult?.excerpt?.value || 
-                       '')
-                       // 双重过滤确保无HTML标签
-                       .replace(/]*>/g, '[图片]') // 替换图片标签为文字提示
-                       .replace(/!\[.*?\]\(.*?\)/g, '[图片]') // 替换Markdown图片语法
-                       .replace(/<[^>]+>/g, '') // 去除所有HTML标签
-                       .replace(/\s+/g, ' ') // 合并多余空格
-                       .trim();
+         let content = hit._highlightResult?.content?.value || 
+                 hit._highlightResult?.excerpt?.value || 
+                 hit.content || 
+                 hit.excerpt || 
+                 '';
           
-          // 如果内容为空，尝试从snippet获取
-          if (!content) {
-            content = (hit._snippetResult?.content?.value || '')
-              .replace(/]*>/g, '[图片]')
-              .replace(/<[^>]+>/g, '');
+          // 2. 保留Algolia的高亮标签
+          content = content
+            // 保留<em>标签（Algolia的高亮标记）
+            .replace(/<em>/g, '<span class="search-keyword">')
+            .replace(/<\/em>/g, '</span>')
+            // 移除其他HTML标签
+            .replace(/<(?!(?:span|em)\b)[^>]+>/g, '') 
+            // 清理Markdown图片
+            .replace(/!\[.*?\]\(.*?\)/g, '[图片]')
+            // 合并多余空格
+            .replace(/\s+/g, ' ')
+            .trim();
+
+          // 3. 智能摘要截取（围绕关键词）
+          const maxLength = 150;
+          if (content.length > maxLength) {
+            // 查找第一个高亮位置
+            const keywordPos = content.indexOf('<span class="search-keyword">');
+            if (keywordPos >= 0) {
+              const start = Math.max(0, keywordPos - 30);
+              const end = Math.min(content.length, keywordPos + maxLength);
+              content = (start > 0 ? '...' : '') + 
+                        content.substring(start, end) + 
+                        (end < content.length ? '...' : '');
+            } else {
+              content = content.substring(0, maxLength) + '...';
+            }
           }
-          
-          // 截取内容（150字符）
-          if (content.length > 150) {
-            content = content.substring(0, 150) + '...';
-          }
-          
-          // 自定义高亮
-          if (query) {
-            const regex = new RegExp(escapeRegExp(query), 'gi');
-            content = content.replace(regex, '<span class="search-keyword">$&</span>');
-          }
-          
-          html += `
-            <li>
-              <a href="${fullUrl}" class="search-result-title"><h2>${title}</h2></a>
-              <h3 class="search-result-abstract">${content}</h3>
-              <hr>
-            </li>
-          `;
+
+          // 4. 确保有有效内容
+          if (!content) content = "暂无内容摘要";
+
+                  
+                // 确保每个结果有独立的<li>容器
+            html += `<li class="search-result-item">`;
+            html += `<div class="search-result-content">`;
+            html += `<a href="${fullUrl}" class="search-result-title"><h2>${title}</h2></a>`;
+            html += `<h3 class="search-result-abstract">${content}</h3>`;
+            html += `</div></li>`;  // 添加内容容器
+
         });
         
         html += '</ul>';

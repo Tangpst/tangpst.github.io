@@ -503,6 +503,11 @@ a:hover {
   padding: 10px 10px 80px;
 }
 
+.search-result-list {
+  list-style: none;
+  padding: 0;
+}
+
 .search-result-list li {
   list-style-type: none;
   font-size: 1.6rem;
@@ -561,6 +566,18 @@ a:hover {
 .search-box{
   margin: 0 auto;
   width: 750px;
+}
+
+.search-result-item {
+  display: block;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+
+.search-result-title {
+  display: block;
 }
 
 .search-result-title h2 {
