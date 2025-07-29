@@ -9,12 +9,12 @@
   <meta name="description" content="" />
 
   
-    <meta name="robots" content="noindex" />
-  
   
   <title>
     
-      Tang.cafe
+      JULY 29 宜故事新编 
+      
+      
     
   </title>
 
@@ -34,10 +34,10 @@
 
 
   
-    
-<link rel="stylesheet" href="/css/index.css">
 
   
+    
+<link rel="stylesheet" href="/css/post.css">
 
   
 
@@ -99,83 +99,46 @@
 
 
       <div class="main">
-        <div>
-  <ul>
-    <!-- 遍历渲染文章 -->
-    
-    <li>
-      <h3>Jul 01, 2025</h3>
-      <h2>
-        <a href="/2025/07/01/JULY-1-%E5%AE%9C%E7%B4%A7%E6%8F%A1%E5%8F%8C%E6%89%8B/">
-          
-            
-              <span>JULY 1 宜紧握双手</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h3>Jun 30, 2025</h3>
-      <h2>
-        <a href="/2025/06/30/JUNE-30-%E5%AE%9C%E5%8F%91%E7%8E%B0%E7%BE%8E/">
-          
-            
-              <span>JUNE 30 宜发现美</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h3>Jun 29, 2025</h3>
-      <h2>
-        <a href="/2025/06/29/JUNE-29-%E9%97%AE%E5%80%99%E5%B0%8F%E9%B8%9F%EF%BC%9F/">
-          
-            
-              <span>JUNE 29</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h3>Jun 28, 2025</h3>
-      <h2>
-        <a href="/2025/06/28/JUNE-28-%E6%9D%A5%E8%87%AA%E7%91%9E%E5%B9%B8/">
-          
-            
-              <span>JUNE 28 来自瑞幸</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h3>Jun 25, 2010</h3>
-      <h2>
-        <a href="/2010/06/25/Heaven-Eternal-Earth-Everlasting-%E5%A4%A9%E9%95%BF%E5%9C%B0%E4%B9%85/">
-          
-            
-              <span>Heaven Eternal, Earth Everlasting[天长地久]</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-  </ul>
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+ 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+// 获取文件的临时访问链接
+async function getSecureFileUrl(filename) {
+  const response = await fetch(`/r2/presign?file=${encodeURIComponent(filename)}`);
+  const data = await response.json();
+  return data.url; // 得到带有签名的临时URL
+}
+
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Jul 29, 2025
+  </h3>
+  <h1>
+    JULY 29 宜故事新编
+  </h1>
+  <div class="content markdown-body">
+    <p><img src="/images/mmexport1753753599874.jpg" alt="宜故事新编"></p>
+
+  </div>
   
-  <nav class="post-navigation">
     
-      <a id="prev" class="index-nav" href="/page/3/">&lt;&nbsp;NEWER</a>
-    
-    
-  </nav>
+      <a id="older" class="blog-nav" href="/2025/07/28/JULY-28-%E5%BF%8C%E8%87%AA%E6%BB%A1/">OLDER&nbsp;&gt;</a>
+      
+        
+            
 </div>
 
         <div class="footer">
