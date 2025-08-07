@@ -9,12 +9,12 @@
   <meta name="description" content="咖啡因来自咖啡果" />
 
   
-    <meta name="robots" content="noindex" />
-  
   
   <title>
     
-      Tang.cafe 
+      AUGUST 6 北京 DAY 5 
+      
+      
     
   </title>
 
@@ -34,10 +34,10 @@
 
 
   
-    
-<link rel="stylesheet" href="/css/index.css">
 
   
+    
+<link rel="stylesheet" href="/css/post.css">
 
   
 
@@ -99,70 +99,48 @@
 
 
       <div class="main">
-        <div>
-  <ul>
-    <!-- 遍历渲染文章 -->
-    
-    <li>
-      <h3>Jun 29, 2025</h3>
-      <h2>
-        <a href="/2025/06/29/JUNE-29-%E9%97%AE%E5%80%99%E5%B0%8F%E9%B8%9F%EF%BC%9F/">
-          
-            
-              <span>JUNE 29</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h3>Jun 28, 2025</h3>
-      <h2>
-        <a href="/2025/06/28/JUNE-28-%E6%9D%A5%E8%87%AA%E7%91%9E%E5%B9%B8/">
-          
-            
-              <span>JUNE 28 来自瑞幸</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h3>Jan 23, 2024</h3>
-      <h2>
-        <a href="/2024/01/23/%E5%A4%9C%E5%B9%95%E4%B8%8B%E7%9A%84%E5%BD%A9%E8%99%B9%E6%A1%A5/">
-          
-            
-              <span>夜幕下的彩虹桥</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-    <li>
-      <h3>Jun 25, 2010</h3>
-      <h2>
-        <a href="/2010/06/25/Heaven-Eternal-Earth-Everlasting-%E5%A4%A9%E9%95%BF%E5%9C%B0%E4%B9%85/">
-          
-            
-              <span>Heaven Eternal, Earth Everlasting[天长地久]</span>
-            
-          
-        </a>
-      </h2>
-    </li>
-    
-  </ul>
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+ 
+<!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdmirror.com/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+// 获取文件的临时访问链接
+async function getSecureFileUrl(filename) {
+  const response = await fetch(`/r2/presign?file=${encodeURIComponent(filename)}`);
+  const data = await response.json();
+  return data.url; // 得到带有签名的临时URL
+}
+
+</script>
+
+<div class="post">
+  <h3 class="date">
+    Aug 06, 2025
+  </h3>
+  <h1>
+    AUGUST 6 北京 DAY 5
+  </h1>
+  <div class="content markdown-body">
+    <h2 id="天安门"><a href="#天安门" class="headerlink" title="天安门"></a>天安门</h2><blockquote>
+<p>崭新崭新的！<br><img src="https://pub.tang.cafe/cdn-cgi/image/format=webp,quality=80/images/mmexport1754457446592.jpg" alt="august"><br><img src="https://pub.tang.cafe/cdn-cgi/image/format=webp,quality=80/images/IMG_20250806_151800.jpg" alt="天安门"></p>
+</blockquote>
+
+  </div>
   
-  <nav class="post-navigation">
     
-      <a id="prev" class="index-nav" href="/page/4/">&lt;&nbsp;NEWER</a>
-    
-    
-  </nav>
+      <a id="older" class="blog-nav" href="/2025/08/05/AUGUST-5-%E5%8C%97%E4%BA%AC-DAY-4/">OLDER&nbsp;&gt;</a>
+      
+        
+            
 </div>
 
         <div class="footer">
